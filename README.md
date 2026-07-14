@@ -1,14 +1,28 @@
-Mitigating Bias in ML Models using MinDiff
+# Mitigating Bias in ML Models using MinDiff
 
-This project demonstrates how to address fairness concerns in machine learning models using the MinDiff remediation technique. The goal is to ensure that a text classifier performs equitably across different sensitive demographic groups.
+## Problem
+Classification models can show unequal performance across demographic
+groups even when overall accuracy looks fine. This project applies
+TensorFlow's MinDiff technique to reduce that disparity in a text
+classification model.
 
-Key Objectives:
--Fairness Analysis: Evaluated model performance using "equal opportunity" fairness metrics.
--Bias Mitigation: Applied the MinDiff technique to a TensorFlow model to reduce performance gaps between sensitive and non-sensitive datasets.
--Model Evaluation: Improved False Positive Rates (FPR) for underperforming groups to meet production standards.
-Tools & Technologies
--TensorFlow & Keras: For model building and remediation.
--Google Cloud Vertex AI: Used Workbench instances for scalable model training and evaluation.
--Python: Core programming language for implementation.
-Results:
-Successfully reduced the disparity in model predictions, ensuring a more responsible and fair AI deployment.
+## Approach
+- Trained a baseline Keras classifier and measured performance gap
+  across [group A] vs [group B] using False Positive Rate (FPR) and
+  Equal Opportunity Difference as fairness metrics.
+- Applied MinDiff regularization during training to penalize the model
+  for unequal error rates between groups.
+- Re-evaluated the same metrics post-mitigation to quantify improvement.
+
+## Results
+| Metric | Before MinDiff | After MinDiff |
+|---|---|---|
+| FPR Gap | [X]% | [X]% |
+| Equal Opportunity Diff | [X] | [X] |
+
+## Key takeaway
+[e.g., "Reduced FPR disparity by X% with only a Y% drop in overall
+accuracy — showing fairness and performance don't have to fully trade off."]
+
+## Tech stack
+TensorFlow, TF Model Remediation (MinDiff), Keras, Vertex AI
